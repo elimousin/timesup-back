@@ -10,13 +10,13 @@ class TimesUpService() {
 
     fun addNewName(newName: String): AddNewNameResponse {
         NameList.addName(newName)
-        println("New name added : $newName")
+        println("Nouveau nom ajoute : $newName")
         return AddNewNameResponse("OK")
     }
 
     fun shuffle(): AddNewNameResponse {
         NameList.shuffle()
-        println("Shuffled list : ${NameList.nameList}")
+        println("Liste melangee : ${NameList.nameList}")
         return AddNewNameResponse("OK")
     }
 
@@ -25,15 +25,15 @@ class TimesUpService() {
     }
 
     fun found(valueFounded: String): String {
-        println("Founded value : $valueFounded")
+        println("Nom trouve : $valueFounded")
         return NameList.next()
     }
 
     fun validermots(values: List<ValidateMot>): String {
         val motOk = values.filter { it.ischeked }.map { it.nom }
         val motKo = values.filter { !it.ischeked }.map { it.nom }
-        println("Mots tourves : $motOk")
-        println("Mots non tourves : $motKo")
+        println("Noms trouves : $motOk")
+        println("Noms non trouves : $motKo")
         motKo.forEach{NameList.pass(it)}
 
         return "OK"

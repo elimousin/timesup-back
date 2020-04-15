@@ -4,6 +4,7 @@ import com.timesup.dto.AddNewName
 import com.timesup.dto.AddNewNameResponse
 import com.timesup.utils.NameList
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -14,6 +15,11 @@ import org.springframework.http.HttpStatus
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TimesUpControllerTests(@Autowired val restTemplate: TestRestTemplate) {
+
+    @BeforeEach
+    fun setUp(){
+        NameList.nameList.clear()
+    }
 
     @Test
     fun `Assert timesUp add_name value, content and status code`() {
